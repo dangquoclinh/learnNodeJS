@@ -1,4 +1,4 @@
-const Car = require(`./models/Car`).Car
+const Car = require(`./models/Car`)
 const { json } = require("express/lib/response");
 
 function sum2Numbers(x, y) {
@@ -120,10 +120,35 @@ let iphoneC = Object.assign({}, iphoneA)
 // mlet iphoneC = {...iphoneA}
 let iphoneD = iphoneC;
 iphoneC.name = "2xxxx";
-console.log(`iphoneA = ${JSON.stringify(iphoneA)}`)
+console.log(`iphone = ${JSON.stringify(iphoneA)}`)
 console.log(`iphoneC = ${JSON.stringify(iphoneC)}`)
 console.log(`iphoneD = ${JSON.stringify(iphoneD)}`)
+let mazda = new Car({name: "mazda 10", year: 2020})
+
+const makeOperatorObject = (param1) => {
+    let i = 0;
+    let result = {
+        next: () => {
+            if(i < 2) {
+                i++;
+                return {value: {name: "mazda", year:2019}, done: false}
+            } else {
+                return {value: {name: "meccc", year:2020}, done: true}
+            }
+
+        }
+    }
+    return result
+}
+let operatorObject = makeOperatorObject("xxx")
+//duyet cac doi tuong
 debugger
+while(!operatorObject.next().done) {
+    debugger
+    console.log()
+}
+debugger
+
 
 
 
